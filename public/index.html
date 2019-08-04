@@ -14,18 +14,13 @@
     
     <body>
         
-        <nav class="nav-extended">
+        <nav class="nav">
             <div class="nav-wrapper">
                 <a href="#" class="brand-logo center">CNET Scraper</a>
                 <ul id="nav-mobile" class="left hide-on-med-and-down">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Saved Reviews</a></li>
+                    <li id="navHome" class="active"><a href="/">Home</a></li>
+                    <li id="navSaved"><a href="/saved">Saved Reviews</a></li>
                 </ul>
-            </div>
-
-            <div class="nav-content teal">
-                <span class="nav-title center">Title</span>
-                <!-- <p class="center-align">This should be left aligned</p> -->
             </div>
         </nav>
 
@@ -36,23 +31,26 @@
                         <div class="card-image">
                             <img src="https://images.pexels.com/photos/1472443/pexels-photo-1472443.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
                             <span class="card-title">Mongo Scraper <br>CNET Editors Choice Winners</span>
+                            <a id="scrapeBtn" class="btn-floating btn-large halfway-fab waves-effect waves-light red"><i class="material-icons">queue</i></a>
                         </div>
                         <div class="card-content">
-                            <p>I am a very simple card. I am good at containing small bits of information.
-                            I am convenient because I require little markup to use effectively.</p>
+                            <div class="row">
+                                <p>This website scrapes CNET'S editors top picks of 2019. Click on the product name to read the review. Or click the heart to save to your favorites. <br>Click on the scrape button <i class="material-icons"> queue</i> to get started.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             <!-- </div> -->
-
+            
             <ul class="collection" id="target">
                 <li class="collection-header"><h4 class="center">CNET's Editors Choice</h4></li>
             </ul>
         </div>
-
-        <script src="./assets/javascript/index.js" async defer></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="./assets/javascript/index.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     </body>
 
-</html>
+</html> 
