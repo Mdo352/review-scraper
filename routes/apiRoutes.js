@@ -39,7 +39,18 @@ module.exports = function (app) {
 
     // Route for getting all Reviews from the db
     app.get("/reviews", function(req, res) {
-        db.Review.find({})
+        db.Review.find({"saved" : false})
+        .then(function(dbReview) {
+            res.json(dbReview);
+        })
+        .catch(function(err) {
+            res.json(err);
+        });
+    });
+
+    // Route for getting all Reviews from the db
+    app.get("/saved-reviews", function(req, res) {
+        db.Review.find({"saved" : true})
         .then(function(dbReview) {
             res.json(dbReview);
         })
@@ -54,6 +65,7 @@ module.exports = function (app) {
         db.Review.findByIdAndUpdate(req.params.id, { $set: {saved: true} })
         .then(function(data) {
             res.json(data);
+            res.redirect('/');
         })
         .catch(function(err) {
             res.json(err);
@@ -61,11 +73,13 @@ module.exports = function (app) {
     });
 
     // Route for saving/updating a products associated Note
-    // app.get("/reviews/:id", function(req, res) {
-
-    //     console.log(req.params.id);
-        // Create a new note and pass the req.body to the entry
-        // db.Review.findByIdAndUpdate(req.params.id, {new: true})
+    app.post("/notes/:id", function(req, res) {
+        // console.log(req.params.id);
+        console.log(req.body);
+        // db.Note.create(req.body)
+        // .then(function(dbNote) {
+        //     return db.Review.findOneAndUpdate({ _id: req.params.id }, { note: dbNote._id }, { new: true });
+        // })
         // .then(function(dbReview) {
         //     // If we were able to successfully update an Article, send it back to the client
         //     res.json(dbReview);
@@ -74,5 +88,5 @@ module.exports = function (app) {
         //     // If an error occurred, send it to the client
         //     res.json(err);
         // });
-    // });
+    });
 };
